@@ -1,29 +1,18 @@
-const btn = document.querySelector("button");
+const btn = document.querySelector("#button");
+const inputPrice = document.querySelector("#price");
+const inputDiscount = document.querySelector("#discount");
+const div = document.querySelector("#results");
 
-btn.addEventListener("click", (e) => {
-  e.preventDefault();
-  const inputDiscount = document.querySelector("#discount").value;
-  const inputPrice = document.querySelector("#price").value;
+btn.addEventListener("click", calcularDescuento);
 
-  if (inputPrice === "" || inputDiscount === "") {
-    showResults("Revisa que los campos esten llenos");
-  } else {
-    const price = parseInt(inputPrice);
-    const discount = parseInt(inputDiscount);
+function calcularDescuento(event) {
+  // (P * (100 - D)) / 100
+  event.preventDefault();
 
-    const total = (price * (100 - discount)) / 100;
+  const price = inputPrice.value;
+  const discount = inputDiscount.value;
 
-    showResults(`${total}$`);
-  }
-});
+  const resultadoFinal = (price * (100 - discount)) / 100;
 
-function showResults(total) {
-  const div = document.querySelector(".results");
-
-  div.removeChild(div.firstChild);
-
-  const p = document.createElement("p");
-  p.innerText = total;
-
-  div.appendChild(p);
+  div.innerText = "El nuevo precio con descuento es $" + resultadoFinal;
 }
