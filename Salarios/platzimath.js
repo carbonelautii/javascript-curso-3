@@ -39,6 +39,27 @@ PlatziMath.calcularModa = function calcularModa(array) {
   return moda;
 };
 
+PlatziMath.calcularMediana = function calcularMediana(array) {
+  const listaEsPar = PlatziMath.esPar(array);
+
+  if (listaEsPar) {
+    const indexMitad1ListaPar = array.length / 2 - 1;
+    const indexMitad2ListaPar = array.length / 2;
+
+    const listaMitades = [];
+    listaMitades.push(array[indexMitad1ListaPar]);
+    listaMitades.push(array[indexMitad2ListaPar]);
+    const medianaListaPar = PlatziMath.calcularPromedio(listaMitades);
+    return medianaListaPar;
+  } else {
+    const indexMitadListaImpar = Math.floor(array.length / 2); // ARRAY[10,20,30,40,50,60,70,80,90,100,110]
+    const medianaListaImpar = array[indexMitadListaImpar];
+    console.log(indexMitadListaImpar);
+    console.log(medianaListaImpar);
+    return medianaListaImpar;
+  }
+};
+
 PlatziMath.ordenarLista = function ordenarLista(listaDesordenada) {
   function ordenarListaSort(valorAcumulado, nuevoValor) {
     // if (valorAcumulado > nuevoValor) {
@@ -70,27 +91,6 @@ PlatziMath.ordenarListaBidimensional = function ordenarListaBidimensional(
 
   const lista = listaDesordenada.sort(ordenarListaSort);
   return lista;
-};
-
-PlatziMath.calcularMediana = function calcularMediana(array) {
-  const listaEsPar = PlatziMath.esPar(array);
-
-  if (listaEsPar) {
-    const indexMitad1ListaPar = array.length / 2 - 1;
-    const indexMitad2ListaPar = array.length / 2;
-
-    const listaMitades = [];
-    listaMitades.push(array[indexMitad1ListaPar]);
-    listaMitades.push(array[indexMitad2ListaPar]);
-    const medianaListaPar = PlatziMath.calcularPromedio(listaMitades);
-    return medianaListaPar;
-  } else {
-    const indexMitadListaImpar = Math.floor(array.length / 2); // ARRAY[10,20,30,40,50,60,70,80,90,100,110]
-    const medianaListaImpar = array[indexMitadListaImpar];
-    console.log(indexMitadListaImpar);
-    console.log(medianaListaImpar);
-    return medianaListaImpar;
-  }
 };
 
 PlatziMath.calcularPromedio = function calcularPromedio(array) {
