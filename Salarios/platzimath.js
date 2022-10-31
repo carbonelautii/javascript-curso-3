@@ -39,16 +39,17 @@ PlatziMath.calcularModa = function calcularModa(array) {
   return moda;
 };
 
-PlatziMath.calcularMediana = function calcularMediana(array) {
+PlatziMath.calcularMediana = function calcularMediana(listaDesordenada) {
+  const array = PlatziMath.ordenarLista(listaDesordenada);
   const listaEsPar = PlatziMath.esPar(array);
 
   if (listaEsPar) {
     const indexMitad1ListaPar = array.length / 2 - 1;
     const indexMitad2ListaPar = array.length / 2;
-
     const listaMitades = [];
     listaMitades.push(array[indexMitad1ListaPar]);
     listaMitades.push(array[indexMitad2ListaPar]);
+
     const medianaListaPar = PlatziMath.calcularPromedio(listaMitades);
     return medianaListaPar;
   } else {
@@ -58,6 +59,38 @@ PlatziMath.calcularMediana = function calcularMediana(array) {
     console.log(medianaListaImpar);
     return medianaListaImpar;
   }
+};
+
+PlatziMath.calcularPromedio = function calcularPromedio(array) {
+  // --------------------------------------------------------
+  // FORMA DE CALCULAR PROMEDIO CON UN CICLO FOR
+  // let sumaArray = 0;
+  // for (let i = 0; i < array.length; i++) {
+  //   sumaArray = sumaArray + array[i];
+  // }
+  // ---------------------------------------------------------
+
+  // ---------------------------------------------------------
+  // FORMA DE CALCULAR PROMEDIO CON UNA FUNCION
+  // function sumarElementos(valorAcumulado, nuevoValor) {
+  //   return valorAcumulado + nuevoValor;
+  // }
+  // ---------------------------------------------------------
+
+  // ---------------------------------------------------------
+  // FORMA DE CALCULAR PROMEDIO CON UNA ARROW FUNCTION
+  function sumarTodosElementos(valorAcumulado, nuevoValor) {
+    return valorAcumulado + nuevoValor;
+  }
+  const sumaArray = array.reduce(sumarTodosElementos);
+  /* Podemos resumir un poco el codigo sacando los corchetes, haciendo eso hace un return automatico.
+    const sumarElementos = (valorAcumulado, nuevoValor) => valorAcumulado + nuevoValor;
+  };
+  */
+  // ---------------------------------------------------------
+  const promedio = sumaArray / array.length;
+  // console.log(promedio);
+  return promedio;
 };
 
 PlatziMath.ordenarLista = function ordenarLista(listaDesordenada) {
@@ -91,36 +124,4 @@ PlatziMath.ordenarListaBidimensional = function ordenarListaBidimensional(
 
   const lista = listaDesordenada.sort(ordenarListaSort);
   return lista;
-};
-
-PlatziMath.calcularPromedio = function calcularPromedio(array) {
-  // --------------------------------------------------------
-  // FORMA DE CALCULAR PROMEDIO CON UN CICLO FOR
-  // let sumaArray = 0;
-  // for (let i = 0; i < array.length; i++) {
-  //   sumaArray = sumaArray + array[i];
-  // }
-  // ---------------------------------------------------------
-
-  // ---------------------------------------------------------
-  // FORMA DE CALCULAR PROMEDIO CON UNA FUNCION
-  // function sumarElementos(valorAcumulado, nuevoValor) {
-  //   return valorAcumulado + nuevoValor;
-  // }
-  // ---------------------------------------------------------
-
-  // ---------------------------------------------------------
-  // FORMA DE CALCULAR PROMEDIO CON UNA ARROW FUNCTION
-  const sumarElementos = (valorAcumulado, nuevoValor) => {
-    return valorAcumulado + nuevoValor;
-  };
-  const sumaArray = array.reduce(sumarElementos);
-  /* Podemos resumir un poco el codigo sacando los corchetes, haciendo eso hace un return automatico.
-    const sumarElementos = (valorAcumulado, nuevoValor) => valorAcumulado + nuevoValor;
-  };
-  */
-  // ---------------------------------------------------------
-  const promedio = sumaArray / array.length;
-  // console.log(promedio);
-  return promedio;
 };
