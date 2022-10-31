@@ -125,3 +125,8 @@ PlatziMath.ordenarListaBidimensional = function ordenarListaBidimensional(
   const lista = listaDesordenada.sort(ordenarListaSort);
   return lista;
 };
+
+elementos[(1, 2, 3, 4, 5, 6, 7, 8, 9)];
+// length = elementos[0,1,2,3,4,5,6,7,8]
+
+elementos[elementos.length * 50];
